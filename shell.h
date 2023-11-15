@@ -90,9 +90,8 @@ typedef struct builtin
 	int (*f)(_shell *datashell);
 } builtin_t;
 
-/* aux_lists.c */
-seperator_list  *add_sep_node_end(sep_list **head, char sep);
-void free_seperator_list(sep_list **head);
+seperator_list  *add_sep_node_end(seperator_list **head, char sep);
+void free_seperator_list(seperator_list **head);
 line_list *add_line_node_end(line_list **head, char *line);
 void free_line_list(line_list **head);
 
