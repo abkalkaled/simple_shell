@@ -3,7 +3,7 @@
 /**
  * add_sep_node_end - adds separator at node end
  * @head: head of the linked list.
- * @sep: separator found (; | &).
+ * @seperate: separator found (; | &).
  * Return: address of the head.
  */
 sept_list *add_sep_node_end(sept_list **head, char seperate)
