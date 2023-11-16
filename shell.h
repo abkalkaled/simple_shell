@@ -179,8 +179,8 @@ void cd_to_home(_shell *datashell);
 /* cd_shell.c */
 int cd_shell(_shell *datashell);
 
-/* get_builtin */
-int (*get_builtin(char *cmd))(_shell *datashell);
+/* builtin.c */
+int (*handle_builtin(char *cd))(_shell *datashell);
 
 /* _exit.c */
 int exit_shell(_shell *datashell);
