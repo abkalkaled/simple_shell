@@ -183,7 +183,7 @@ int cdir(_shell *datashell);
 int (*handle_builtin(char *cd))(_shell *datashell);
 
 /* _exit.c */
-int exit_shell(_shell *datashell);
+int exit_(_shell *datashell);
 
 /* aux_stdlib.c */
 int get_len(int n);
@@ -191,9 +191,9 @@ char *aux_itoa(int n);
 int _atoi(char *s);
 
 /* aux_error1.c */
-char *strcat_cd(_shell *, char *, char *, char *);
+char *strcat_(_shell *, char *mssg, char *err, char *str);
 char *error_get_cd(_shell *datashell);
-char *error_not_found(_shell *datashell);
+char *error_not_seen(_shell *datashell);
 char *error_exit_shell(_shell *datashell);
 
 /* aux_error2.c */
@@ -207,7 +207,7 @@ char *error_path_126(_shell *datashell);
 void handle_sigint(int sigint);
 
 	/* get_err.c */
-int calls_error(_shell *datashell, int eval);
+int calls_error(_shell *datashell, int err);
 
 /* aux_help.c */
 void aux_help_env(void);
