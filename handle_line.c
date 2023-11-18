@@ -1,30 +1,28 @@
 #include "shell.h"
-
 /**
- * bring_line - assigns the line var for get_line
+ * get_line - alocates line
  * @lineptr: Buffer that store the input str
  * @buffer: str that is been called to line
- * @n: size of line
+ * @i: size of line
  * @j: size of buffer
  */
-void bring_line(char **lineptr, size_t *n, char *buffer, size_t j)
+void get_line(char **lineptr, size_t *i, char *buffer, size_t j)
 {
 
 	if (*lineptr == NULL)
 	{
 		if  (j > BUFSIZE)
-			*n = j;
-
+			*i = j;
 		else
-			*n = BUFSIZE;
+			*i = BUFSIZE;
 		*lineptr = buffer;
 	}
-	else if (*n < j)
+	else if (*i < j)
 	{
 		if (j > BUFSIZE)
-			*n = j;
+			*i = j;
 		else
-			*n = BUFSIZE;
+			*i = BUFSIZE;
 		*lineptr = buffer;
 	}
 	else
@@ -34,17 +32,17 @@ void bring_line(char **lineptr, size_t *n, char *buffer, size_t j)
 	}
 }
 /**
- * get_line - Read inpt from stream
+ * handle_line - Reads
  * @lineptr: buffer that stores the input
- * @n: size of lineptr
+ * @i: size of lineptr
  * @stream: stream to read from
  * Return: The number of bytes
  */
-ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
+ssize_t handle_line(char **lineptr, size_t *i, FILE *stream)
 {
-	int i;
+	int j;
 	static ssize_t input;
-	ssize_t retval;
+	ssize_t val;
 	char *buffer;
 	char t = 'z';
 
@@ -59,13 +57,13 @@ ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
 		return (-1);
 	while (t != '\n')
 	{
-		i = read(STDIN_FILENO, &t, 1);
-		if (i == -1 || (i == 0 && input == 0))
+		j = read(STDIN_FILENO, &t, 1);
+		if (j == -1 || (i == 0 && input == 0))
 		{
 			free(buffer);
 			return (-1);
 		}
-		if (i == 0 && input != 0)
+		if (j == 0 && input != 0)
 		{
 			input++;
 			break;
@@ -76,9 +74,9 @@ ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
 		input++;
 	}
 	buffer[input] = '\0';
-	bring_line(lineptr, n, buffer, input);
-	retval = input;
-	if (i != 0)
+	get_line(lineptr, i, buffer, input);
+	val = input;
+	if (j != 0)
 		input = 0;
-	return (retval);
+	return (val);
 }
