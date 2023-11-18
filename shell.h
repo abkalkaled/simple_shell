@@ -97,12 +97,12 @@ void free_l_list(l_list **head);
 _var *add_rvar_node(_var **head, int lvar, char *var, int lval);
 void free_rvar_list(_var **head);
 
-/* aux_str functions */
+/* concstr functions */
 char *_strcat(char *dest, const char *src);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
+int _strspn(char *s, char *a);
 
 /* aux_mem.c */
 void _memcpy(void *newptr, const void *ptr, unsigned int size);
@@ -150,14 +150,14 @@ char *rep_var(char *input, _shell *datashell);
 void bring_line(char **lineptr, size_t *n, char *buffer, size_t j);
 ssize_t get_line(char **lineptr, size_t *n, FILE *stream);
 
-/* exec_line */
-int exec_line(_shell *datashell);
+/* e_line */
+int exe_line(_shell *datashell);
 
-/* cmd_exec.c */
+/* execcmd.c */
 int is_cdir(char *path, int *i);
-char *_which(char *cmd, char **_env);
-int is_executable(_shell *datashell);
-int check_error_cmd(char *dir, _shell *datashell);
+char *_search(char *cmd, char **_env);
+int _exec(_shell *datashell);
+int error_check(char *dir, _shell *datashell);
 int cmd_exec(_shell *datashell);
 
 /* env1.c */
@@ -171,13 +171,13 @@ int _setenv(_shell *datashell);
 int _unsetenv(_shell *datashell);
 
 /* cd.c */
-void cd_dot(_shell *datashell);
-void cd_to(_shell *datashell);
+void _cd(_shell *datashell);
+void cd_des(_shell *datashell);
 void cd_previous(_shell *datashell);
-void cd_to_home(_shell *datashell);
+void cd_home(_shell *datashell);
 
-/* cd_shell.c */
-int cd_shell(_shell *datashell);
+/* cdir.c */
+int cdir(_shell *datashell);
 
 /* builtin.c */
 int (*handle_builtin(char *cd))(_shell *datashell);
@@ -203,12 +203,11 @@ char *error_syntax(char **_args);
 char *error_permission(char **_args);
 char *error_path_126(_shell *datashell);
 
+/*sigint*/
+void handle_sigint(int sigint);
 
-/* get_error.c */
-int get_error(_shell *datashell, int eval);
-
-/* get_sigint.c */
-void get_sigint(int sig);
+	/* get_err.c */
+int calls_error(_shell *datashell, int eval);
 
 /* aux_help.c */
 void aux_help_env(void);

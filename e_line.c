@@ -1,22 +1,20 @@
 #include "shell.h"
-
 /**
- * exec_line - finds builtins and commands
- *
+ * exe_line - finds builtins and commands
  * @datash: data relevant (args)
  * Return: 1 on success.
  */
-int exec_line(data_shell *datash)
+int exe_line(_shell *datashell)
 {
-	int (*builtin)(data_shell *datash);
+	int (*builtin)(_shell *datashell);
 
-	if (datash->args[0] == NULL)
+	if (datashell->_args[0] == NULL)
 		return (1);
 
-	builtin = get_builtin(datash->args[0]);
+	builtin = handle_builtin(datashell->_args[0]);
 
 	if (builtin != NULL)
-		return (builtin(datash));
+		return (builtin(datashell));
 
-	return (cmd_exec(datash));
+	return (exec_cmd(datashell));
 }

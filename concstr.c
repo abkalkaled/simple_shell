@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * _strcat - concatenate two strings
  * @dest: char pointer the dest of the copied str
@@ -8,8 +7,7 @@
  */
 char *_strcat(char *dest, const char *src)
 {
-	int i;
-	int j;
+	int i,j;
 
 	for (i = 0; dest[i] != '\0'; i++)
 		;
@@ -31,14 +29,13 @@ char *_strcat(char *dest, const char *src)
  */
 char *_strcpy(char *dest, char *src)
 {
+	size_t t;
 
-	size_t a;
-
-	for (a = 0; src[a] != '\0'; a++)
+	for (t = 0; src[t] != '\0'; t++)
 	{
-		dest[a] = src[a];
+		dest[t] = src[t];
 	}
-	dest[a] = '\0';
+	dest[t] = '\0';
 
 	return (dest);
 }
@@ -63,9 +60,9 @@ int _strcmp(char *s1, char *s2)
 }
 /**
  * _strchr - locates a character in a string,
- * @s: string.
- * @c: character.
- * Return: the pointer to the first occurrence of the character c.
+ * @s: string to locate from
+ * @c: character to be searched
+ * Return: the pointer to the first c.
  */
 char *_strchr(char *s, char c)
 {
@@ -80,26 +77,26 @@ char *_strchr(char *s, char c)
 }
 /**
  * _strspn - gets the length of a prefix substring.
- * @s: initial segment.
- * @accept: accepted bytes.
- * Return: the number of accepted bytes.
+ * @s: first part
+ * @a: bytes
+ * Return: num of a
  */
-int _strspn(char *s, char *accept)
+int _strspn(char *s, char *a)
 {
-	int i, j, bool;
+	int i, j, boolean;
 
 	for (i = 0; *(s + i) != '\0'; i++)
 	{
-		bool = 1;
-		for (j = 0; *(accept + j) != '\0'; j++)
+		boolean = 1;
+		for (j = 0; *(a + j) != '\0'; j++)
 		{
-			if (*(s + i) == *(accept + j))
+			if (*(s + i) == *(a + j))
 			{
-				bool = 0;
+				boolean = 0;
 				break;
 			}
 		}
-		if (bool == 1)
+		if (boolean == 1)
 			break;
 	}
 	return (i);
