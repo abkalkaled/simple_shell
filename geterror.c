@@ -37,7 +37,7 @@ char *strcat_(_shell *datashell, char *mssg, char *err, char *str)
 }
 /**
  * error_get_cd - error message for cd
- * @datash: data relevant (directory)
+ * @datashell: data relevant (directory)
  * Return: Error message
  */
 char *error_get_cd(_shell *datashell)
@@ -73,7 +73,7 @@ char *error_get_cd(_shell *datashell)
 
 /**
  * error_not_seen - command not found
- * @datash: data relevant (counter, arguments)
+ * @datashell: data relevant (counter, arguments)
  * Return: Error message
  */
 char *error_not_seen(_shell *datashell)

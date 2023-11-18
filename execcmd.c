@@ -161,7 +161,7 @@ int exec_cmd(data_shell *datashell)
 	char *dir;
 	(void) wd;
 
-	exe = _executable(datashell);;
+	exe = _executable(datashell);
 	if (exe == 0)
 	{
 		dir = _search(datashell->_args[0], datashell->_env);
@@ -169,7 +169,7 @@ int exec_cmd(data_shell *datashell)
 			return (1);
 	}
 	if (exe == -1)
-		return(1);
+		return (1);
 
 	pd = fork();
 	if (pd == 0)
